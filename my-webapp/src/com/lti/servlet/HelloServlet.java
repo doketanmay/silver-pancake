@@ -23,6 +23,7 @@ public class HelloServlet extends HttpServlet {
 		out.write("<html><body>");
 		out.write("<h1>Hello World</h1>");
 		out.write("<h1>Webhook</h1>");
+		out.write("<h1>Hello World</h1>");
 		out.write("</body></html>");
 		
 	}
