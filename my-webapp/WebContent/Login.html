@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	function getParameterByName(name, url = window.location.href) {
+	    name = name.replace(/[\[\]]/g, '\\$&');
+	    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+
+	function checkError(){
+		var error = getParameterByName('error');
+		if(error == 111)
+			document.getElementById("msg").innerHTML = "Invalid Username/Password";
+		else if(error == 222)
+			document.getElementById("msg").innerHTML = "Capatcha Verification Failed";
+	}
+	
+// 	 var url = window.location.href;
+// 	    if(url.includes("error")){
+// 	        if(url.includes("error=111")){
+// 	            alert("Invalid Username or Password");
+// 	        }
+// 	        else{
+// 	            alert("Invalid Captcha");
+// 	        }
+// 	    }
+</script>
+</head>
+<body onload="checkError()">
+<div id="msg"></div>
+<form action="login.lti" method="post">
+	Enter username : <input type="text" name="username" /> <br />
+	Enter password : <input type="password" name="password" /> <br />
+	Remember Me : <input type="checkbox" name="rememberMe" value ="yes" /> <br/>
+	Captcha : <img src="captcha.jpg" />
+	Enter above captcha text : <input type="text" name="captchaInput" /><br /> 
+	<button type="submit">Login</button>
+	
+</form>
+</body>
+</html>
